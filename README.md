@@ -1,7 +1,9 @@
 # SPScrollPageView
 ![](https://github.com/Tr2e/SPScrollPageView/raw/master/Pictures/SPScrollPageView.png)
-[![Version](https://img.shields.io/cocoapods/v/SPScrollPageView.svg?style=flat)](http://cocoapods.org/pods/SPScrollPageView)
-![](https://img.shields.io/badge/language-objc-orange.svg)
+![Version](https://img.shields.io/cocoapods/v/SPScrollPageView.svg)
+![](https://img.shields.io/badge/language-objc-orange.svg)	
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 ## SPScrollPageView
 
 [掘金](https://juejin.im/post/5a9a72a8518825557a2e6bb5)
