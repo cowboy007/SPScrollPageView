@@ -2,6 +2,10 @@
 ![](https://github.com/Tr2e/SPScrollPageView/raw/master/Pictures/SPScrollPageView.png)
 ## SPScrollPageView
 
+[掘金](https://juejin.im/post/5a9a72a8518825557a2e6bb5)
+[简书](https://www.jianshu.com/p/2457d29f83a8)
+[博客](http://tr2e.com.cn/)
+
 ### 作用
 * 让横向页面切换更流畅顺滑，解决非相邻页面切换时带来的快速略过问题
 * 使用数据源，避免非相邻页面**动画**切换时创建**非目标页面view**造成的性能损耗
