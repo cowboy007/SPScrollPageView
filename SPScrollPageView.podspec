@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SPScrollPageView"
 
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
 
   s.summary      = "Help some common horizontal scroll pages to switch more smooth & easy"
 
