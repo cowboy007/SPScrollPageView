@@ -126,6 +126,7 @@
 #pragma mark - Target index
 - (void)confirmInitialIndex
 {
+    _currentPageNumber = _initialIndex;
     CGSize pageSize = self.bounds.size;
     
     SPReuseCell *cell = [self getReuseCell:NO];

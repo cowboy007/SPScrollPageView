@@ -24,34 +24,34 @@
     // # How to use #
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     SPScrollPageView *pageView = [SPScrollPageView scrollPageViewWithPageCount:5
-                                                                  initialIndex:3
+                                                                  initialIndex:4
                                                                          frame:(CGRect){CGPointZero,screenSize}];
     pageView.sp_delegete = self;
     [self.view addSubview:pageView];
     
     // # Test #
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpToIndex:1 animated:YES];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpToIndex:2 animated:NO];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:4 animated:YES];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [pageView jumpImmediatelyToIndex:1 animated:YES];
     });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpToIndex:0 animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView jumpImmediatelyToIndex:3 animated:NO];
     });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView jumpImmediatelyToIndex:4 animated:YES];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView jumpImmediatelyToIndex:0 animated:YES];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView jumpImmediatelyToIndex:1 animated:YES];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(18 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [pageView jumpImmediatelyToIndex:4 animated:NO];
     });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpToIndex:2 animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(21 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView jumpImmediatelyToIndex:1 animated:NO];
     });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(40 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(24 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [pageView jumpImmediatelyToIndex:4 animated:YES];
     });
 }
@@ -60,8 +60,15 @@
     UIView *view = [pageView dequeuePageViewWithIndex:index];
     if (!view) {
         CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        UILabel *label = [UILabel new];
+        label.text = [NSString stringWithFormat:@"%ld",index];
+        label.font = [UIFont systemFontOfSize:30 weight:UIFontWeightBold];
+        [label sizeToFit];
+        
         view = [[UIView alloc] initWithFrame:(CGRect){CGPointZero,screenSize}];
         view.backgroundColor = RANDOM_COLOR;
+        label.center = CGPointMake(view.bounds.size.width/2.0, view.bounds.size.width/2.0);
+        [view addSubview:label];
         NSLog(@"Initialize");
     }else{
         NSLog(@"Reuse");
