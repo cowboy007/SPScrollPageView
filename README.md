@@ -1,6 +1,14 @@
 # SPScrollPageView
 ![](https://github.com/Tr2e/SPScrollPageView/raw/master/Pictures/SPScrollPageView.png)
+![Version](https://img.shields.io/cocoapods/v/SPScrollPageView.svg)
+![](https://img.shields.io/badge/language-objc-orange.svg)	
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 ## SPScrollPageView
+
+[掘金](https://juejin.im/post/5a9a72a8518825557a2e6bb5)
+[简书](https://www.jianshu.com/p/2457d29f83a8)
+[博客](http://tr2e.com.cn/)
 
 ### 作用
 * 让横向页面切换更流畅顺滑，解决非相邻页面切换时带来的快速略过问题
@@ -69,7 +77,7 @@
 ### 基本原理
 1. 继承自`UIScrollView`
 2. 设置`pagingEnabled`为`YES`,用于切换分页效果的实现
-3. 使用`KVO`监听`contentOffset`的变化，控制页面的复用及相关数据的更新。这里多说一点，很多情况下利用现有的`UIScrollView`的`delegate`可以更容易获悉相关状态，但是笔者没有这么做，为什么呢？假如我们过分依赖原生代理方法，一但使用者想使用相关代理方法且重新设置了`delegate`，那么我们的写的东西功能比较出现问题。
+3. 使用`KVO`监听`contentOffset`的变化，控制页面的复用及相关数据的更新。这里多说一点，很多情况下利用现有的`UIScrollView`的`delegate`可以更容易获悉相关状态，但是笔者没有这么做，为什么呢？假如我们过分依赖原生代理方法，一但使用者想使用相关代理方法且重新设置了`delegate`，那么功能一定会出现问题。
 4. 使用`UIScrollView`的`panGestureRecognizer`，结合*第3条*，处理手指拖动页面时的变化
 
 ### 写在最后
