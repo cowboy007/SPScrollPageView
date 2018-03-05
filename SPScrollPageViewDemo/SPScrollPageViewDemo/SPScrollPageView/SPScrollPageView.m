@@ -109,17 +109,12 @@
 {
     [super didMoveToSuperview];
     // initialize the first page
-    if (_spDelegateRespondsTo.pageForIndex)
-    {
-        UIView *view = [self.sp_delegete scrollPageView:self pageForIndex:_initialIndex];
-        if (![_pageMap objectForKey:@(_initialIndex)]) {
-            [_pageMap setObject:view forKey:@(_initialIndex)];
-        }
-        SPReuseCell *cell = [self getReuseCell:NO];
-        [cell addSubview:view];
-        if (_spDelegateRespondsTo.didEndBounce) {
-            [self.sp_delegete scrollPageDidEndBounceAtPage:view index:_initialIndex];
-        }
+    UIView *view = [self viewForIndex:_initialIndex];
+    if (!view) return;
+    SPReuseCell *cell = [self getReuseCell:NO];
+    [cell addSubview:view];
+    if (_spDelegateRespondsTo.didEndBounce) {
+        [self.sp_delegete scrollPageDidEndBounceAtPage:view index:_initialIndex];
     }
 }
 
@@ -331,6 +326,7 @@
     UIView *page = nil;
     if (_spDelegateRespondsTo.pageForIndex) {
         page = [self.sp_delegete scrollPageView:self pageForIndex:index];
+        page.frame = (CGRect){CGPointZero,self.frame.size};
         if (![_pageMap objectForKey:@(index)]) {
             [_pageMap setObject:page forKey:@(index)];
         }
