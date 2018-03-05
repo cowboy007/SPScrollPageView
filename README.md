@@ -44,11 +44,11 @@
         UILabel *label = [UILabel new];
         label.text = [NSString stringWithFormat:@"%ld",index];
         label.font = [UIFont systemFontOfSize:30 weight:UIFontWeightBold];
+        label.center = CGPointMake(screenSize.width/2.0, screenSize.width/2.0);
         [label sizeToFit];
         
-        view = [[UIView alloc] initWithFrame:(CGRect){CGPointZero,screenSize}];
+        view = [[UIView alloc] init];
         view.backgroundColor = RANDOM_COLOR;
-        label.center = CGPointMake(view.bounds.size.width/2.0, view.bounds.size.width/2.0);
         [view addSubview:label];
         NSLog(@"Initialize");
     }else{
