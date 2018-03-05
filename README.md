@@ -6,8 +6,8 @@
 
 ## SPScrollPageView
 
-[掘金](https://juejin.im/post/5a9a72a8518825557a2e6bb5)
-[简书](https://www.jianshu.com/p/2457d29f83a8)
+[掘金](https://juejin.im/post/5a9ce77a6fb9a028c9798c2f)
+[简书](https://www.jianshu.com/p/667f3eaeb3bf)
 [博客](http://tr2e.com.cn/)
 
 ### 作用
