@@ -66,7 +66,7 @@
 `index`:目标位置 `animated`:是否使用动画
 
 ### 怎么应用
-1. `pod 'SPScrollPageView' ,'~> 0.0.3'`
+1. `pod 'SPScrollPageView' ,'~> 0.0.4'`
 2. 直接将*Gayhub*上项目中的**SPScrollPageView**文件夹拖入工程
 > Gayhub：[SPScrollPageView](https://github.com/Tr2e/SPScrollPageView) 求个star ^-^
 
