@@ -64,6 +64,7 @@
     self.backgroundColor = [UIColor whiteColor];
 
     _currentPageNumber = 0;
+    _jumpInfo.targetIndex = -1;
     _pageMap = [NSMutableDictionary dictionary];
     
     // contentView

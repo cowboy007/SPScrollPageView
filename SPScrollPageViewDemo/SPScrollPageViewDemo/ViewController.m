@@ -30,30 +30,30 @@
     [self.view addSubview:pageView];
     
     // # Test #
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:1 animated:YES];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:3 animated:NO];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:4 animated:YES];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:0 animated:YES];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:1 animated:YES];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(18 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:4 animated:NO];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(21 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:1 animated:NO];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(24 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pageView jumpImmediatelyToIndex:4 animated:YES];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:1 animated:YES];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:3 animated:NO];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:4 animated:YES];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:0 animated:YES];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:1 animated:YES];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(18 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:4 animated:NO];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(21 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:1 animated:NO];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(24 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pageView jumpImmediatelyToIndex:4 animated:YES];
+//    });
 }
 
 - (UIView *)scrollPageView:(SPScrollPageView *)pageView pageForIndex:(NSInteger)index{
