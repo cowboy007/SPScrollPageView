@@ -81,7 +81,7 @@
 ```
 
 ### 怎么应用
-1. `pod 'SPScrollPageView' ,'~> 0.0.5'`
+1. `pod 'SPScrollPageView' ,'~> 0.0.6'`
 2. 直接将*Gayhub*上项目中的**SPScrollPageView**文件夹拖入工程
 > Gayhub：[SPScrollPageView](https://github.com/Tr2e/SPScrollPageView) 求个star ^-^
 
