@@ -253,11 +253,9 @@
             _isPanningEnd = YES;
             _isUpdatingInfo = YES;
             [self removeReuseCell];
-            NSLog(@"--->panning end remove<---");
         }else{
             [self updateCurrentPageNumber];
             [self removeReuseCell];
-            NSLog(@"---> scroll end <---");
         }
     }
     if(!needUpdate)
@@ -282,7 +280,6 @@
  */
 - (void)updateCurrentPageNumber
 {
-    NSLog(@"update");
     _isUpdatingInfo = YES;
     
     CGPoint contentOffset = self.contentOffset;
@@ -308,7 +305,6 @@
             _reuseCell.targetIndex = -1;
             [_reuseCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
             [cell removeFromSuperview];
-            NSLog(@"---> Remove At:%ld<---",_currentPageNumber);
         }
     }
     _isPanningEnd = NO;
@@ -326,7 +322,6 @@
     UIView *page = [self viewForIndex:target];
     [_reuseCell addSubview:page];
     [self addSubview:_reuseCell];
-    NSLog(@"---> Add Page:%ld <---",target);
 }
 
 /**
