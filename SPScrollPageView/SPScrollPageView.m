@@ -24,7 +24,7 @@
     BOOL _isPanning;
     BOOL _isPanningEnd;
     BOOL _isUpdatingInfo;
-    
+
     struct {
         unsigned int pageForIndex:1;
         unsigned int didEndBounce:1;
@@ -62,7 +62,7 @@
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
     self.backgroundColor = [UIColor whiteColor];
-    
+
     _currentPageNumber = 0;
     _jumpInfo.targetIndex = -1;
     _pageMap = [NSMutableDictionary dictionary];
@@ -82,10 +82,10 @@
 
 - (void)handlePanAction:(UIPanGestureRecognizer *)panRec{
     _isPanning = !(
-                   panRec.state == UIGestureRecognizerStateEnded ||
-                   panRec.state == UIGestureRecognizerStateFailed ||
-                   panRec.state == UIGestureRecognizerStateCancelled
-                   );
+                  panRec.state == UIGestureRecognizerStateEnded ||
+                  panRec.state == UIGestureRecognizerStateFailed ||
+                  panRec.state == UIGestureRecognizerStateCancelled
+                  );
 }
 
 - (void)setupContentViewWithPageCount:(NSInteger)pageCount
@@ -95,7 +95,7 @@
     temp = MIN(temp, 2);
     
     if(pageCount)
-        _cellSet = [NSMutableSet setWithCapacity:temp];
+    _cellSet = [NSMutableSet setWithCapacity:temp];
     
     CGSize pageSize = self.frame.size;
     self.contentSize = CGSizeMake(pageSize.width*MAX(1, pageCount), pageSize.height);
@@ -109,6 +109,11 @@
 - (void)didMoveToSuperview
 {
     [super didMoveToSuperview];
+    [self initializeFirstPage];
+}
+
+- (void)initializeFirstPage
+{
     // initialize the first page
     UIView *view = [self viewForIndex:_initialIndex];
     if (!view) return;
@@ -116,6 +121,34 @@
     [cell addSubview:view];
     if (_spDelegateRespondsTo.didEndBounce) {
         [self.sp_delegete scrollPageDidEndBounceAtPage:view index:_initialIndex];
+    }
+}
+
+#pragma mark - Reload
+
+- (void)reloadData
+{
+    [_pageMap removeAllObjects];
+    [self confirmInitialIndex];
+    [self initializeFirstPage];
+}
+
+- (void)reloadDataForIndex:(NSInteger)index
+{
+    [_pageMap removeObjectForKey:@(index)];
+    UIView *view = [self viewForIndex:index];
+    if (!view) return;
+    if (index == _currentPageNumber) {
+        SPReuseCell *reuse = [self getReuseCell:NO];
+        [reuse addSubview:view];
+    }
+}
+
+- (void)reloadDataForIndex:(NSInteger)index show:(BOOL)toShow animated:(BOOL)animated
+{
+    [self reloadDataForIndex:index];
+    if (toShow) {
+        [self jumpImmediatelyToIndex:index animated:animated];
     }
 }
 
@@ -220,9 +253,11 @@
             _isPanningEnd = YES;
             _isUpdatingInfo = YES;
             [self removeReuseCell];
+            NSLog(@"--->panning end remove<---");
         }else{
             [self updateCurrentPageNumber];
             [self removeReuseCell];
+            NSLog(@"---> scroll end <---");
         }
     }
     if(!needUpdate)
@@ -247,6 +282,7 @@
  */
 - (void)updateCurrentPageNumber
 {
+    NSLog(@"update");
     _isUpdatingInfo = YES;
     
     CGPoint contentOffset = self.contentOffset;
@@ -272,6 +308,7 @@
             _reuseCell.targetIndex = -1;
             [_reuseCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
             [cell removeFromSuperview];
+            NSLog(@"---> Remove At:%ld<---",_currentPageNumber);
         }
     }
     _isPanningEnd = NO;
@@ -289,6 +326,7 @@
     UIView *page = [self viewForIndex:target];
     [_reuseCell addSubview:page];
     [self addSubview:_reuseCell];
+    NSLog(@"---> Add Page:%ld <---",target);
 }
 
 /**
@@ -402,4 +440,3 @@
 }
 
 @end
-

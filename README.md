@@ -16,6 +16,10 @@
 * 可直接设置初始化目标位置
 * 支持无动画的直接页面切换
 
+
+**pod 0.0.5 updated**
+* 增加页面刷新相关方法，详细请看 **怎么使用**
+
 ![跳转](https://user-gold-cdn.xitu.io/2018/3/4/161f0205c8c61af3?w=373&h=630&f=gif&s=38964)
 
 ![拖动](https://user-gold-cdn.xitu.io/2018/3/4/161f02319270b888?w=373&h=630&f=gif&s=202611)
@@ -65,8 +69,19 @@
 * 跳转，直接使用`- (void)jumpImmediatelyToIndex:(NSInteger)index animated:(BOOL)animated;`
 `index`:目标位置 `animated`:是否使用动画
 
+* 刷新页面功能（2018/05/12）
+
+```
+// 刷新全部页面，恢复初始状态
+- (void)reloadData;
+// 刷新固定位置的页面，并不会跳转
+- (void)reloadDataForIndex:(NSInteger)index;
+// 刷新固定位置的页面，可以设置是否跳转
+- (void)reloadDataForIndex:(NSInteger)index show:(BOOL)toShow animated:(BOOL)animated;
+```
+
 ### 怎么应用
-1. `pod 'SPScrollPageView' ,'~> 0.0.3'`
+1. `pod 'SPScrollPageView' ,'~> 0.0.5'`
 2. 直接将*Gayhub*上项目中的**SPScrollPageView**文件夹拖入工程
 > Gayhub：[SPScrollPageView](https://github.com/Tr2e/SPScrollPageView) 求个star ^-^
 

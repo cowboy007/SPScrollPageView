@@ -51,9 +51,15 @@
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(21 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [pageView jumpImmediatelyToIndex:1 animated:NO];
 //    });
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(24 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [pageView jumpImmediatelyToIndex:4 animated:YES];
-//    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView reloadData];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView reloadDataForIndex:1];
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pageView reloadDataForIndex:3 show:YES animated:YES];
+    });
 }
 
 - (UIView *)scrollPageView:(SPScrollPageView *)pageView pageForIndex:(NSInteger)index{

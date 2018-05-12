@@ -109,6 +109,11 @@
 - (void)didMoveToSuperview
 {
     [super didMoveToSuperview];
+    [self initializeFirstPage];
+}
+
+- (void)initializeFirstPage
+{
     // initialize the first page
     UIView *view = [self viewForIndex:_initialIndex];
     if (!view) return;
@@ -116,6 +121,34 @@
     [cell addSubview:view];
     if (_spDelegateRespondsTo.didEndBounce) {
         [self.sp_delegete scrollPageDidEndBounceAtPage:view index:_initialIndex];
+    }
+}
+
+#pragma mark - Reload
+
+- (void)reloadData
+{
+    [_pageMap removeAllObjects];
+    [self confirmInitialIndex];
+    [self initializeFirstPage];
+}
+
+- (void)reloadDataForIndex:(NSInteger)index
+{
+    [_pageMap removeObjectForKey:@(index)];
+    UIView *view = [self viewForIndex:index];
+    if (!view) return;
+    if (index == _currentPageNumber) {
+        SPReuseCell *reuse = [self getReuseCell:NO];
+        [reuse addSubview:view];
+    }
+}
+
+- (void)reloadDataForIndex:(NSInteger)index show:(BOOL)toShow animated:(BOOL)animated
+{
+    [self reloadDataForIndex:index];
+    if (toShow) {
+        [self jumpImmediatelyToIndex:index animated:animated];
     }
 }
 
